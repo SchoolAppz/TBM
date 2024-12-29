@@ -1,0 +1,53 @@
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--secondary-blue);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    will-change: transform;
+}
+
+.cursor-follower {
+    width: 16px;
+    height: 16px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: difference;
+    will-change: transform;
+    opacity: 0.8;
+}
+
+/* Hide default cursor */
+* {
+    cursor: none !important;
+}
+
+/* Show default cursor on interactive elements */
+a, button, input, textarea, [role="button"] {
+    cursor: none !important;
+}
+
+/* Cursor hover states */
+a:hover ~ .cursor,
+button:hover ~ .cursor,
+[role="button"]:hover ~ .cursor {
+    transform: scale(1.5) !important;
+}
+
+/* Hide on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+    
+    * {
+        cursor: auto !important;
+    }
+} 
